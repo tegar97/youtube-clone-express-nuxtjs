@@ -16,8 +16,8 @@
                     <span class="video-views ">1.927.288 x ditonton</span>
                     <span class="video-date ml-2">•19 Jan 2014</span>
                     <div class="video-info-right">
-                        <span><i class="fas fa-thumbs-up"></i><span class="ml-3">21 rb</span> </span>
-                        <span><i class="fas fa-thumbs-down ml-5"></i><span class="ml-3">12</span></span>
+                        <a v-on:click="sumLike(); isLike = !isLike; " ><i class="fas fa-thumbs-up" :class="{active : isLike}"></i><span class="ml-3" :class="{active : isLik}" >{{like}} </span> </a>
+                        <a v-on:click="sumDislike(); isDislike = !isDislike;"><i class="fas fa-thumbs-down ml-5" :class="{active : isDislike}"></i><span class="ml-3" >{{dislike}}</span></a>
                         <span><i class="fas fa-share ml-5"></i> <span class="ml-3">Bagikan</span></span>
                         <span><i class="fas fa-save ml-5"></i> <span class="ml-3">Simpan</span></span>
                         <span><i class=" fas fa-ellipsis-h ml-5"></i></span>
@@ -32,6 +32,7 @@
                         <span class="channel-name ">Tegar Akmal</span>
                         <span class="text-secondary-2 mr-auto">29,6 rb subscriber</span>
                         
+                        
 
                     </div>
                     <div class="subscribe">
@@ -41,7 +42,27 @@
 
                     </div>
                 </div>
-                   
+                    <div class="description-box  mt-5">
+                         <p class="description">What is Lorem Ipsum?
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                           been the industry's standard dummy text ever since the 1500s,<br> when an unknown printer took a
+                           galley of type and scrambled it to make a type specimen book. It has survived not only five
+                           centuries, <br>but also the leap into electronic typesetting, remaining essentially unchanged. It
+                           was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                           passages,<br> and more recently with desktop publishing software like Aldus PageMaker including
+                           versions of Lorem Ipsum.
+
+                          
+                            </p>
+                    </div>
+                      <div class="line mt-4"></div>
+                    <section class="section-komentar">
+                        <div class="komentar-data">
+                          <span class="text-white ">230 Komentar</span>
+                          <span class="text-secondary-2 ml-5"><i class="fas fa-sort-amount-down"></i>Urutkan</span>
+
+                        </div>
+                    </section>
               </div>
                    
 
@@ -55,7 +76,29 @@
 export default {
     data(){
         return{
-            isSubscribe: false
+            isSubscribe: false,
+            isLike: false,
+            isDislike: false,
+            like: 0,
+            dislike: 0,
+        }
+    },
+    methods:{
+        sumLike() {
+            if(this.isLike && !this.isDislike) {
+                 this.like -= 1
+              
+            }else if(!this.isLike){
+                  this.like += 1
+            }
+        },
+        sumDislike() {
+            if(this.isDislike && !this.isLike) {
+                 this.dislike -= 1
+              
+            }else if(!this.isDislike){
+                  this.dislike += 1
+            }
         }
     }
 }
@@ -123,5 +166,26 @@ export default {
 .subscribe{
     display: flex;
     align-items: center;
+}
+.active{
+    color: #3ea6ff;
+
+}
+.description-box{
+    width: 80%;
+    margin-left: 7rem;
+}
+.description{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.komentar-data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span{
+        font-size: 2rem;;
+    }
+   
 }
 </style>
