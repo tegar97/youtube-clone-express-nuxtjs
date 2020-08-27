@@ -26,8 +26,20 @@
                  
                 </div>
                 <div class="line mt-4"></div>
-                <div class="video-description">
-                    
+                <div class="video-description mt-5">
+                    <img src="./../../assets/image/profile.jpg" alt="profile " class="channel-image mt-2">
+                    <div class="channel-info ml-5 mr-auto">
+                        <span class="channel-name ">Tegar Akmal</span>
+                        <span class="text-secondary-2 mr-auto">29,6 rb subscriber</span>
+                        
+
+                    </div>
+                    <div class="subscribe">
+                        <button class="btn-subscribe " v-on:click="isSubscribe = !isSubscribe " v-if="!isSubscribe">subscribe</button>
+                        <button class="btn-subscribe btn-active" v-on:click="isSubscribe = !isSubscribe " v-if="isSubscribe">Di Subscribe</button>
+                            <i class="fas fa-bell ml-4" v-if="isSubscribe" style="font-size: 2.4rem; color: #fff;"></i>
+
+                    </div>
                 </div>
                    
               </div>
@@ -39,7 +51,15 @@
        </div>
     </div>
 </template>
-
+<script>
+export default {
+    data(){
+        return{
+            isSubscribe: false
+        }
+    }
+}
+</script>
 <style lang="scss" scoped>
 .video-container{
     display: flex;
@@ -83,8 +103,25 @@
 .video-date{
     margin-right: auto;
 }
+.video-description{
+    display: flex;
+    flex-direction: row;
+}
 .line{
     border-bottom: 1px solid #aaa;
     opacity: 30%;
+}
+.channel-image{
+          width: 4rem;
+          height: 4rem;
+        border-radius: 100%;
+}
+.channel-info{
+    display: flex;
+    flex-direction: column;
+}
+.subscribe{
+    display: flex;
+    align-items: center;
 }
 </style>
