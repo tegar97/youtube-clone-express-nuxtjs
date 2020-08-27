@@ -1,9 +1,12 @@
 <template>
+
     <div>
+  
        <div class="container mt-5 ">
+           
            <div class="row ">
               <div class="video-container">
-                <iframe width="100%" height="500" class="video" src="https://www.youtube.com/embed/qHer-rGfTco">
+                <iframe autoplay width="100%" height="500" class="video" allow='autoplay' src="https://www.youtube.com/embed/qHer-rGfTco?autoplay=1">
                 </iframe>
                 <div class="hastag">
                   <a class="video-hastag mt-2 ">#reddead2</a>
@@ -57,12 +60,27 @@
                     </div>
                       <div class="line mt-4"></div>
                     <section class="section-komentar">
-                        <div class="komentar-data">
+                        <div class="komentar-data mt-3">
                           <span class="text-white ">230 Komentar</span>
                           <span class="text-secondary-2 ml-5"><i class="fas fa-sort-amount-down"></i>Urutkan</span>
-
+                        
                         </div>
+                          <div class="komentar-input mt-5">
+                                <img src="./../../assets/image/profile.jpg" alt="profile " class="channel-image mt-2">
+                               
+
+                       
+                                <input placeholder="komentar anda disini    " class="form-input ml-3" v-on:click="Iscommentary = true">
+                               
+                          </div>
+                           <div class="komentar-button">
+                                 <button class="btn btn-transparent btn-lg ml-3 text-white" v-on:click="Iscommentary = false" v-if="Iscommentary">Batal</button> 
+                                 <button class="btn btn-secondary btn-lg" v-if="Iscommentary">Submit</button>
+
+                            </div>
+                                
                     </section>
+                    <br>
               </div>
                    
 
@@ -81,11 +99,13 @@ export default {
             isDislike: false,
             like: 0,
             dislike: 0,
+            Iscommentary: false
         }
     },
+    computed:{},
     methods:{
         sumLike() {
-            if(this.isLike && !this.isDislike) {
+            if(this.isLike) {
                  this.like -= 1
               
             }else if(!this.isLike){
@@ -93,7 +113,7 @@ export default {
             }
         },
         sumDislike() {
-            if(this.isDislike && !this.isLike) {
+            if(this.isDislike) {
                  this.dislike -= 1
               
             }else if(!this.isDislike){
@@ -185,7 +205,37 @@ export default {
     align-items: center;
     span{
         font-size: 2rem;;
+        font-weight: 400;
     }
    
+}
+.komentar{
+    &-input{
+            display: flex;
+    align-items: flex-start;
+    }
+    &-button{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+
+
+.form-input{
+    width: 100%;
+    background-color: #191919;
+    color: #fff;
+    font-size: 2rem;
+    padding: .2rem 1rem;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    transition: all .3s ease-in;
+    
+
+    &:focus{
+        outline: none;
+            border-bottom: 1px solid black;
+    }
 }
 </style>
