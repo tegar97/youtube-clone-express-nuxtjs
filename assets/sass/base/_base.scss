@@ -1,0 +1,22 @@
+html {
+    font-size: 62.5% !important;
+
+    @include respond(tab-land) { // width =  < 900 
+        font-size: 56.25%; //1rem = 9px , 9 /16 = 50%
+    }
+    @include respond(tab-port) {  // width =  < 600 
+        font-size: 50%; // 1rem = 8px , 8/16 = 50% 
+    }
+    
+    @include respond(big-dekstop) {
+        font-size: 76%; //1rem = 12 , 12/16 = 75%
+    }
+}
+
+a{
+    text-decoration:none !important;
+    
+}
+body{
+    background-color: $color-primary !important;
+}
